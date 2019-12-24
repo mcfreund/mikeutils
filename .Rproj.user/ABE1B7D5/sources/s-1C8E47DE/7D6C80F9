@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1577129171342.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7D6C80F9",
+    "lastKnownWriteTime" : 1577126999,
+    "last_content_update" : 1577126999,
+    "path" : "C:/local/R/mikeutils/R/dot2dash.R",
+    "project_path" : "R/dot2dash.R",
+    "properties" : {
+        "cursorPosition" : "18,10",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1577129201568.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9929242B",
+    "lastKnownWriteTime" : 1577126963,
+    "last_content_update" : 1577126963,
+    "path" : "C:/local/R/mikeutils/R/similarity_matrix_operations.R",
+    "project_path" : "R/similarity_matrix_operations.R",
+    "properties" : {
+        "cursorPosition" : "25,10",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

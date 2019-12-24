@@ -1,0 +1,60 @@
+## subject list for pro_bias glm ----
+## mike freund, 2019-02-19
+
+library(dplyr)
+library(data.table)
+library(purrr)
+
+## read sheets ----
+
+subj_sum <- read.csv(
+  "C:/Users/mcf/Box/global/wustl/proj/cross-task-rsa/sheets/dmcc2_all-runs-summary.csv",
+  stringsAsFactors = FALSE
+)
+stroop <- read.csv(
+  "C:/Users/mcf/Box/global/wustl/proj/cross-task-rsa/sheets/dmcc2_behavior-and-events-stroop.csv",
+  stringsAsFactors = FALSE
+)
+stroop.rt <- stroop %>% filter(acc == 1, !is.na(rt))
+stroop.er <- stroop %>% filter(!is.na(acc)) %>% mutate(error = 1 - acc)
+
+
+sample.pro.str <- subj_sum %>% filter(session == "pro", task == "str", mb == "four")
+(missing.nii <- unique(filter(sample.pro.str, num.nii < 1)$subj))  ## 6 subjs missing images
+sample.pro.str <- sample.pro.str %>% filter(!subj %in% missing.nii)
+missing.acc <- unique(filter(sample.pro.str, per.missing > 0)$subj)  ## 5 subj missing accuracy coding
+sample.pro.str <- sample.pro.str %>% filter(!subj %in% missing.acc)
+
+## look at their behavioral data:
+data.sample.pro.str <- stroop %>% filter(subj %in% unique(sample.pro.str$subj), session == "pro")
+sum(is.na(data.sample.pro.str$acc.final)) > 0   ## to check if any NAs---would be case if subj missing data
+updated.sample <- unique(sample.pro.str$subj)
+
+## these subjs should be good to go to fit fMRI GLMs.
+## but, first compare to previous analysis group:
+prior.sample <- read.csv(
+  "C:/Users/mcf/Box/global/wustl/proj/stroop-rsa/sheets/subj-sample_group_201812.csv",
+  stringsAsFactors = FALSE, header = FALSE
+  )[[1]]
+
+setdiff(prior.sample, updated.sample)  ## subjs NOT in new sample that were in old (should be character(0)---and is!)
+(new.subjs <- setdiff(updated.sample, prior.sample))  ## subjs ADDED
+length(new.subjs)  ## TOTAL num subjs added: 23 (including twins, and sleepy subjs)
+sample.pro.str %>% 
+  filter(subj %in% new.subjs, run == 1, !is.na(twin.pair)) %>% 
+  .$twin.pair %>% duplicated %>% sum  ## num twins in ADDED subjs---suprisingly only 3?!
+total.num.paired <- sample.pro.str %>% 
+  filter(run == 1, !is.na(twin.pair)) %>% 
+  .$twin.pair %>% duplicated %>% sum  ## TOTAL num twins in updated sample: 17
+total.num.cotwins <- sample.pro.str %>% 
+  filter(run == 1, !is.na(twin.pair)) %>% 
+  nrow  ## TOTAL num twins in updated sample: 17
+total.num.unrel <- sample.pro.str %>% filter(run == 1, is.na(twin.pair)) %>% nrow
+total.num.cotwins - total.num.paired + total.num.unrel  ## final N: 49 subjects.
+
+## write 'final' subject list to file ----
+write.csv(
+  updated.sample,
+  "C:/Users/mcf/Box/global/wustl/proj/stroop-rsa/sheets/subj-sample_group_201902.csv",
+  row.names = FALSE
+  )
