@@ -29,6 +29,6 @@ mat2vec <- function(m) {
   if (any(is.na(m))) stop("matrix contains NA values.")
 
   m[upper.tri(m, diag = TRUE)] <- NA
-  data.table::melt(m, na.rm = TRUE)
+  reshape2::melt(m, na.rm = TRUE)
 
 }
