@@ -23,6 +23,7 @@ dist2mat <- function(m, ...) as.matrix(dist(t(m), ...))  ## transposed dist (wra
 
 
 ## data wrangling ----
+
 #' @export
 mat2vec <- function(m) {
 
@@ -30,5 +31,25 @@ mat2vec <- function(m) {
 
   m[upper.tri(m, diag = TRUE)] <- NA
   reshape2::melt(m, na.rm = TRUE)
+
+}
+
+#' @export
+vec2mat <- function(v, dnames, diag.val = 1) {
+
+  ## dimension of square matrix from num elements in upper triangle (excluding diag):
+  ## (http://blog.phytools.org/2013/06/upper-triangle-of-matrix-to-vector-by.html)
+  d <- (sqrt(8 * length(v) + 1) + 1) / 2
+
+  m <- diag(d)
+  diag(m) <- diag.val
+  colnames(m) <- dnames
+  rownames(m) <- dnames
+
+  m[lower.tri(m, diag = FALSE)] <- v
+  m <- t(m)
+  m[lower.tri(m, diag = FALSE)] <- v
+
+  m
 
 }
