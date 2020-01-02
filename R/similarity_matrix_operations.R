@@ -25,19 +25,13 @@ dist2mat <- function(m, ...) as.matrix(dist(t(m), ...))  ## transposed dist (wra
 ## data wrangling ----
 
 #' @export
-mat2vec <- function(m, strings = TRUE, full.matrix = FALSE) {
+mat2vec <- function(m, full.matrix = FALSE, varnames = c(".row", ".col"), ...) {
 
   if (any(is.na(m))) stop("matrix contains NA values.")
+  if (!is.array(m)) stop("m is not array.")
   if (!full.matrix) m[upper.tri(m, diag = TRUE)] <- NA
 
-  d <- reshape2::melt(m, na.rm = TRUE)
-
-  if (strings) {
-    i <- sapply(d, is.factor)
-    d[i] <- lapply(d[i], as.character)
-  }
-
-  d
+  reshape2::melt(m, as.is = TRUE, na.rm = TRUE, varnames = varnames, ...)
 
 }
 
