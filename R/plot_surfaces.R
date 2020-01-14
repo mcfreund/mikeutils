@@ -1,8 +1,7 @@
 #' Plotting GIFTI surface files.
 #'
-## Adds a ggplot layer for bootstrapped confidence interval for 2D scatterplot.
-## Much of this was adapted from code written by Joset Etzel
-## (http://mvpa.blogspot.com/2018/06/tutorial-plotting-gifti-images-in-r.html) and by John Muscheli (from library(gifti)).
+#' Much of this was adapted from code written by Joset Etzel
+#' (http://mvpa.blogspot.com/2018/06/tutorial-plotting-gifti-images-in-r.html) and by John Muscheli (from library(gifti)).
 #'
 #' @param underlay a list of length 2, with elements titled c("L", "R"), corresponding to each hemisphere of a gifti of the desired underlay.
 #' @param overlay values (colors) to plot; same structure as underlay

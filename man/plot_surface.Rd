@@ -24,5 +24,6 @@ plot_surface(
 \item{facet.params}{Optional list, of same structure as facet.names, containing theta and phi elements which specify orientations of each facet.}
 }
 \description{
-Plotting GIFTI surface files.
+Much of this was adapted from code written by Joset Etzel
+(http://mvpa.blogspot.com/2018/06/tutorial-plotting-gifti-images-in-r.html) and by John Muscheli (from library(gifti)).
 }
