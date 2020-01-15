@@ -3,6 +3,8 @@
 S3method(mean,rzr)
 export(BootCI)
 export(Mode)
+export(afni)
+export(collate_surface_params)
 export(combo.paste)
 export(combo.paste3)
 export(combo_paste)

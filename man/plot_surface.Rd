@@ -27,3 +27,6 @@ plot_surface(
 Much of this was adapted from code written by Joset Etzel
 (http://mvpa.blogspot.com/2018/06/tutorial-plotting-gifti-images-in-r.html) and by John Muscheli (from library(gifti)).
 }
+\keyword{AFNI,}
+\keyword{gifti}
+\keyword{neuroimaging,}

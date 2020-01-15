@@ -9,6 +9,7 @@
 #' @param dims Dimensions of plot matrix (row, col).
 #' @param facet.params Optional list, of same structure as facet.names, containing theta and phi elements which specify orientations of each facet.
 #' @examples
+#' @keywords AFNI, neuroimaging, gifti
 
 #' @export
 
