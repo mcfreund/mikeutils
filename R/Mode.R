@@ -4,7 +4,6 @@
 #' @param x a vector
 #' @param all.modes boolean that indicates whether multiple modes should be returned if they exist
 #' @keywords stat
-#' @examples
 
 #' @export
 Mode <- function(x, all.modes = TRUE) {

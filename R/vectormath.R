@@ -3,7 +3,6 @@
 #' @param v a numeric vector
 #' @param m a numeric vector or matrix
 #' @keywords scaling, normalizing, centering, linear algebra
-#' @examples
 
 #' @export
 ssq <- function(v) sqrt(sum(v^2))
