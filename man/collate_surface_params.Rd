@@ -2,7 +2,7 @@
 % Please edit documentation in R/collate_surface_params.R
 \name{collate_surface_params}
 \alias{collate_surface_params}
-\title{Common vector math.}
+\title{Read an AFNI gifti image and reshapes to matrix.}
 \usage{
 collate_surface_params(a)
 }
@@ -14,7 +14,7 @@ collate_surface_params(a)
 \item{space}{the surface space the .gii is in. \%in\% c("hcp", "fsave")}
 }
 \description{
-Common vector math.
+Optionally extracts sub-bricks by labels.
 }
 \keyword{algebra}
 \keyword{centering,}
