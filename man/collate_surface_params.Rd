@@ -14,8 +14,3 @@ collate_surface_params(a)
 \description{
 Optionally extracts sub-bricks by labels.
 }
-\keyword{algebra}
-\keyword{centering,}
-\keyword{linear}
-\keyword{normalizing,}
-\keyword{scaling,}
