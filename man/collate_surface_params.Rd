@@ -7,9 +7,11 @@
 collate_surface_params(a)
 }
 \arguments{
-\item{v}{a numeric vector}
+\item{name}{name of .gii file to read}
 
-\item{m}{a numeric vector or matrix}
+\item{xlabels}{optional; a character vector that indicates the exact strings of the sub-bricks to be extracted. If omitted, all sub-bricks are extracted.}
+
+\item{space}{the surface space the .gii is in. \%in\% c("hcp", "fsave")}
 }
 \description{
 Common vector math.
