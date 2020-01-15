@@ -1,14 +1,10 @@
 #' Read an AFNI gifti image and reshapes to matrix.
 #'
 #' Optionally extracts sub-bricks by labels.
-#'
-#' @param name name of .gii file to read
-#' @param xlabels optional; a character vector that indicates the exact strings of the sub-bricks to be extracted. If omitted, all sub-bricks are extracted.
-#' @param space the surface space the .gii is in. \%in\% c("hcp", "fsave")
-#' @keywords AFNI, neuroimaging, gifti
+#' @param v a numeric vector
+#' @param m a numeric vector or matrix
+#' @keywords scaling, normalizing, centering, linear algebra
 #' @examples
-
-#' @export
 
 collate_surface_params <- function(
   name,
