@@ -4,7 +4,7 @@
 \alias{collate_surface_params}
 \title{Read an AFNI gifti image and reshapes to matrix.}
 \usage{
-collate_surface_params(name, space = "hcp", xlabels = NULL)
+collate_surface_params(a)
 }
 \arguments{
 \item{v}{a numeric vector}
