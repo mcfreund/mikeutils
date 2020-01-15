@@ -9,10 +9,9 @@ collate_surface_params(name, space = "hcp", xlabels = NULL)
 \arguments{
 \item{name}{name of .gii file to read}
 
-\item{space}{the surface space the .gii is in. %in% c("hcp", "fsave")}
+\item{space}{the surface space the .gii is in. \%in\% c("hcp", "fsave")}
 
-\item{xlabels}{optional; a character vector that indicates the exact strings of the sub-bricks to be extracted.
-If omitted, all sub-bricks are extracted.}
+\item{xlabels}{optional; a character vector that indicates the exact strings of the sub-bricks to be extracted. If omitted, all sub-bricks are extracted.}
 }
 \description{
 Optionally extracts sub-bricks by labels.
