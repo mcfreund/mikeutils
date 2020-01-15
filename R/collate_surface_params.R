@@ -1,8 +1,8 @@
-#' Read an AFNI gifti image and reshapes to matrix.
+#' Common vector math.
 #'
-#' Optionally extracts sub-bricks by labels.
 #' @param v a numeric vector
 #' @param m a numeric vector or matrix
-#' @examples
+#' @keywords scaling, normalizing, centering, linear algebra
 
+#' @export
 collate_surface_params <- function(a) a

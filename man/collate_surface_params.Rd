@@ -2,7 +2,7 @@
 % Please edit documentation in R/collate_surface_params.R
 \name{collate_surface_params}
 \alias{collate_surface_params}
-\title{Read an AFNI gifti image and reshapes to matrix.}
+\title{Common vector math.}
 \usage{
 collate_surface_params(a)
 }
@@ -12,5 +12,10 @@ collate_surface_params(a)
 \item{m}{a numeric vector or matrix}
 }
 \description{
-Optionally extracts sub-bricks by labels.
+Common vector math.
 }
+\keyword{algebra}
+\keyword{centering,}
+\keyword{linear}
+\keyword{normalizing,}
+\keyword{scaling,}
