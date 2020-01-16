@@ -8,6 +8,7 @@
 read_gifti2matrix  <- function(name){
 
   d <- gifti::read_gifti(name)$data
+
   matrix(unlist(d, use.names = FALSE), nrow = length(d), byrow = TRUE)  ## (use.names == FALSE for speed)
 
 }
