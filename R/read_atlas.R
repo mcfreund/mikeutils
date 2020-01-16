@@ -15,6 +15,9 @@ read_atlas <- function(
   surface = TRUE,
   path.atlas
 ) {
+  ## TODO: lots.
+  ##  - fix dependency issue; rn, it requires cifti to be loaded
+  ##  - add in volumes, alterantive surfaces, etc...
 
   if (missing(path.atlas)) {
     nodename <- Sys.info()["nodename"]
