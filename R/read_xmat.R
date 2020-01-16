@@ -32,7 +32,7 @@ read_xmat <- function(
   afni("1dcat", "-d X_temp.1D > X_temp")  ## write text file from 1D file for R to read
 
   X <- as.matrix(read.table("X_temp", quote = "\"", comment.char = ""))
-  colnames(X) <- xlabels
+  dimnames(X) <- list(tr = NULL, regressor = xlabels)
 
   unlink("X_temp.1D")
   unlink("X_temp")
