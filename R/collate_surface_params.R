@@ -65,7 +65,6 @@ collate_surface_params  <- function(
     stop("xlabels and pattern cannot both be specified")
   } else if (is.null(xlabels) && is.null(pattern)) {
     ## if xlabels and pattern missing, use labels.subbricks to extract params (i.e., extract all params):
-    xlabels <- xlabels.actual
     xinds <- seq_len(length(xlabels))
   } else if (!is.null(pattern)) {
     ## if pattern specified, get inds for matching patterns
@@ -87,7 +86,7 @@ collate_surface_params  <- function(
 
   n.params <- length(xinds)
   if (!all(dim(m) == c(n.params, n.vertices))) stop("dims not expected!")
-  dimnames(m) <- list(param = xlabels[xinds], vertex = NULL)
+  dimnames(m) <- list(param = xlabels.actual[xinds], vertex = NULL)
 
   m
 
