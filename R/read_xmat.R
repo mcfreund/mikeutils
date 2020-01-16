@@ -16,6 +16,11 @@ read_xmat <- function(
   ##  - input validation
   ##  - afni error checking (embed within X_temp?)
 
+  ## get column names
+
+  xlabels <- afni("1d_tool.py", paste0("-infile ", name, " -show_group_labels"))
+  xlabels <- gsub("(.*) label (.*)", "\\2", xlabels)
+
   ## delete previously created files (afni will not overwrite)
 
   unlink("X_temp.1D")
@@ -27,6 +32,7 @@ read_xmat <- function(
   afni("1dcat", "-d X_temp.1D > X_temp")  ## write text file from 1D file for R to read
 
   X <- as.matrix(read.table("X_temp", quote = "\"", comment.char = ""))
+  colnames(X) <- xlabels
 
   unlink("X_temp.1D")
   unlink("X_temp")
