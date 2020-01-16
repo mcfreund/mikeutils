@@ -11,7 +11,8 @@
 collate_surface_params  <- function(
   name,
   space = "hcp",
-  xlabels = NULL
+  xlabels = NULL,
+  pattern = NULL
   ){
 
   # xlabels <- c(
@@ -60,14 +61,20 @@ collate_surface_params  <- function(
   xlabels.actual <- afni("3dinfo", paste0("-label ", name))  ## TODO: some form of error checking here...
   xlabels.actual <- unlist(strsplit(xlabels.actual, "\\|"))
 
-  if (is.null(xlabels)) {
-    ## if xlabels missing, use labels.subbricks to extract params (i.e., extract all params):
+  if (!is.null(xlabels) && !is.null(pattern)) {
+    stop("xlabels and pattern cannot both be specified")
+  } else if (is.null(xlabels) && is.null(pattern)) {
+    ## if xlabels and pattern missing, use labels.subbricks to extract params (i.e., extract all params):
     xlabels <- xlabels.actual
     xinds <- seq_len(length(xlabels))
+  } else if (!is.null(pattern)) {
+    ## if pattern specified, get inds for matching patterns
+    xinds <- grep(pattern, xlabels.actual)
+    if (length(xinds) < 1) stop("pattern has no matches in sub-brick labels")
   } else {
-    ## else match xlabels to labels.subbricks:
-    if (any(!xlabels %in% xlabels.actual)) stop("any(!xlabels %in% labels.subbricks)")
+    ## if xlabels specified, get inds that (fully) match
     xinds <- which(xlabels %in% xlabels.actual)
+    if (length(xinds) < 1) stop("no labels match")
   }
 
   ## read, extract, and reshape to matrix
