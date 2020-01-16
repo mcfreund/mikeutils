@@ -10,8 +10,11 @@
 read_xmat <- function(
   name,
   uncensored = TRUE
-  )
-  {
+)
+{
+  ## TODO:
+  ##  - input validation
+  ##  - afni error checking (embed within X_temp?)
 
   ## delete previously created files (afni will not overwrite)
 
@@ -20,7 +23,7 @@ read_xmat <- function(
 
   ## get in format for R to read
 
-  afni("1d_tool.py", "-infile X_temp.1D -censor_fill -write X_temp.1D")  ## write 1D file
+  afni("1d_tool.py", paste0("-infile ", name, " -censor_fill -write X_temp.1D"))  ## write 1D file
   afni("1dcat", "-d X_temp.1D > X_temp")  ## write text file from 1D file for R to read
 
   X <- as.matrix(read.table("X_temp", quote = "\"", comment.char = ""))
