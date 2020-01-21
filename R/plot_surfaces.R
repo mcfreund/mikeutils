@@ -31,9 +31,11 @@ plot_surface <- function(
   ## input validation
 
   is.bad.type <- !all(is.list(overlay) | is.list(underlay) | is.character(facet.names) | is.numeric(dims))
+  # is.bad.type <- !all(is.list(overlay) | is.list(underlay) | is.character(facet.names) | is.numeric(dims))
   if (is.bad.type) stop("input(s) of wrong type")
   if (any(length(overlay) !=2, length(underlay) != 2)) stop("over/underlay not of length 2")
-  if (any(vapply(c(overlay, underlay), class, character(1)) != "gifti")) stop("bad image classes")
+  if (any(vapply(underlay, class, character(1)) != "gifti")) stop("bad image classes")
+  # if (any(vapply(c(overlay, underlay), class, character(1)) != "gifti")) stop("bad image classes")
   if (any(!names(c(overlay, underlay)) %in% c("L", "R"))) stop("over / underlay names not %in% c('L', 'R')")
   if (any(!facet.names %in% c("left_lateral", "left_medial", "right_lateral", "right_medial"))) stop("bad facet.names")
   if (length(dims) != 2) stop("length(dims) != 2")
@@ -67,7 +69,8 @@ plot_surface <- function(
   triangles <- lapply(underlay, function(.) c(t(.[["data"]][["triangle"]])) + 1)
   indices   <- lapply(triangles, function(.) .[seq(1, length(.), 3)])
   pointsets <- lapply(underlay, function(.) .[["data"]][["pointset"]])
-  values    <- lapply(overlay, function(.) .[["data"]][[1]][, 1])
+  # values    <- lapply(overlay, function(.) .[["data"]][[1]][, 1])
+  values    <- overlay
 
   ## assign colors to triangles
 
