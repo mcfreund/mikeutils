@@ -26,7 +26,7 @@
 plot_surface <- function (
   overlay,
   underlay       = hcp,
-  hues           = viridis(500),
+  hues           = viridis::viridis(500),
   pos.max        = NULL,
   pos.min        = NULL,
   neg.max        = NULL,
