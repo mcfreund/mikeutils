@@ -8,13 +8,15 @@
 #' @keywords AFNI, neuroimaging, gifti
 
 #' @export
-collate_surface_params  <- function(
-  name,
-  space = "hcp",
-  xlabels = NULL,
-  pattern = NULL
-  ){
 
+collate_surface_params <- function (
+  name,
+  space   = "hcp",
+  xlabels = NULL,
+  pattern = NULL,
+  warn    = TRUE
+  )
+{
   # xlabels <- c(
   #   ## intercept and baseline drift
   #   "Run#1Pol#0", "Run#1Pol#1", "Run#1Pol#2", "Run#1Pol#3", "Run#1Pol#4", "Run#1Pol#5",
@@ -39,6 +41,7 @@ collate_surface_params  <- function(
   #   paste0("betas_204319_L.func.gii")
   # )
   # space <- "hcp"
+  # warn = TRUE
 
   ## TODO
   ##  - input validation
@@ -51,15 +54,19 @@ collate_surface_params  <- function(
   ## get number of vertices
 
   if (space == "hcp") {
-    n.vertices <- 32492
-  } else if (space == "fsave") {
-    n.vertices <- 10242
-  } else {
-    stop("!space %in% c('hcp', 'fsave')")
-  }
 
-  xlabels.actual <- afni("3dinfo", paste0("-label ", name))  ## TODO: some form of error checking here...
+    n.vertices <- 32492
+
+  } else if (space == "fsave") {
+
+    n.vertices <- 10242
+
+  } else stop("!space %in% c('hcp', 'fsave')")
+
+
+  xlabels.actual <- afni("3dinfo", paste0("-label ", name))
   xlabels.actual <- unlist(strsplit(xlabels.actual, "\\|"))
+
 
   if (!is.null(xlabels) && !is.null(pattern)) {
 
@@ -74,13 +81,16 @@ collate_surface_params  <- function(
     ## if pattern specified, get inds for matching patterns
 
     xinds <- grep(pattern, xlabels.actual)
-    if (length(xinds) < 1) stop("pattern has no matches in sub-brick labels")
+
+    if (length(xinds) < 1)
+      if (warn) return(NA) else stop("pattern has no matches in sub-brick labels")
 
   } else {
     ## if xlabels specified, get inds that (fully) match
 
     xinds <- which(xlabels %in% xlabels.actual)
-    if (length(xinds) < 1) stop("no labels match")
+    if (length(xinds) < 1)
+      if (warn) return(NA) else stop("no labels match")
 
   }
 
@@ -88,15 +98,16 @@ collate_surface_params  <- function(
 
   gii <- gifti::read_gifti(name)
   d <- gii$data[xinds]
-  m <- matrix(unlist(d, use.names = FALSE), nrow = length(d), byrow = TRUE)  ## (use.names == FALSE for speed)
+  m <- matrix(unlist(d, use.names = FALSE), nrow = length(d), byrow = TRUE)
+  n.params <- length(xinds)
 
   ## check dims & add dimnames
 
-  n.params <- length(xinds)
-  if (!all(dim(m) == c(n.params, n.vertices))) stop("dims not expected!")
-  dimnames(m) <- list(param = xlabels.actual[xinds], vertex = NULL)
+  if (!all(dim(m) == c(n.params, n.vertices))) {
+    if (warn) return(NA) else stop("dims not expected!")
+  }
 
+  dimnames(m) <- list(param = xlabels.actual[xinds], vertex = NULL)
   m
 
 }
-
