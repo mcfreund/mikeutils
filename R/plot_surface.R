@@ -1,6 +1,6 @@
 #' Plot statistics on a surface.
 #'
-# Given an overlay (e.g., statistics) and underlay (e.g., group-template gifti file).
+#' Given an overlay (e.g., statistics) and underlay (e.g., group-template gifti file).
 #' Overlay and underlay must have same structure: lists of length two, with names "L" and "R".
 #' Elements within .$L and .$R correspond to vertices.
 #'

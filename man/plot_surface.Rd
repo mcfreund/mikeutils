@@ -31,7 +31,7 @@ plot_surface(
 
 \item{thresh0}{set zero values to NA? (default == TRUE)}
 
-\item{facet.names}{a vector of elements %in% c("left_lateral", "left_medial", "right_lateral", "right_medial"). Order determines order of facets within of plot grid.}
+\item{facet.names}{a vector of elements \%in\% c("left_lateral", "left_medial", "right_lateral", "right_medial"). Order determines order of facets within of plot grid.}
 
 \item{dims}{the dimensions of the plot matrix to set up (prod(dims) must equal length(facet.names))}
 
