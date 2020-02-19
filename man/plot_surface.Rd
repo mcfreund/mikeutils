@@ -22,40 +22,6 @@ plot_surface(
   ...
 )
 }
-\arguments{
-\item{overlay}{list containing values to plot on surface}
-
-\item{underlay}{list containing underlay image}
-
-\item{hues}{color pallete}
-
-\item{thresh0}{set zero values to NA? (default == TRUE)}
-
-\item{facet.names}{a vector of elements %in% c("left_lateral", "left_medial", "right_lateral", "right_medial"). Order determines order of facets within of plot grid.}
-
-\item{dims}{the dimensions of the plot matrix to set up (prod(dims) must equal length(facet.names))}
-
-\item{anno}{add text indicaing range of values displayed?}
-
-\item{anno.cex}{size of annotation}
-
-\item{not.rstudio.gd}{do not draw plot within rstudio (as rstudio device can be slow!); default is TRUE}
-
-\item{pos.max/neg.min}{optional; values more extreme than these arguments will be set to pos.max/neg.min. If not specified (default), no thresholding occurs.}
-
-\item{pos.min/neg.max}{optional; values less extreme these will be set to 0. If not specified (default), no thresholding occurs.}
-}
 \description{
-Given an overlay (e.g., statistics) and underlay (e.g., group-template gifti file).
-Overlay and underlay must have same structure: lists of length two, with names "L" and "R".
-Elements within .$L and .$R correspond to vertices.
+Plot statistics on a surface.
 }
-\details{
-Much of this was adapted from Jo Etzel and John Muscheli.
-See here: http://mvpa.blogspot.com/2018/06/tutorial-plotting-gifti-images-in-r.html
-}
-\keyword{AFNI,}
-\keyword{data}
-\keyword{gifti,}
-\keyword{neuroimaging,}
-\keyword{vis}
