@@ -142,6 +142,7 @@ plot_surface <- function (
       bty    = "n",
       colkey = switch((facet.i == "left_lateral") + 1, FALSE, list(side = 1, cex.axis = 1.5)),
       col    = hues,
+      NAcol  = rgb(1, 1, 1, 0),  ## set NA to transparent color
       facets = FALSE,
       ...
     )
