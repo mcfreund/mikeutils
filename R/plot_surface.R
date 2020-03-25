@@ -129,6 +129,9 @@ plot_surface <- function (
 
     hemi.i <- switch(grepl("right", facet.i) + 1, "L", "R")
 
+    is.all.na <- sum(is.na(values[[hemi.i]])) == length(values[[hemi.i]])
+    if (is.all.na) values[[hemi.i]][is.na(values[[hemi.i]])] <- 0
+
     plot3D::triangle3D(
       tri    = coords[[hemi.i]],
       colvar = values[[hemi.i]],
