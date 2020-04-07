@@ -1,6 +1,6 @@
 #' Reads trial-level behavioral data and event times for DMCC2 tasks.
-#'
-#' @param files Character; which files to read? Must be either \\%in\\% "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".
+#'?inst
+#' @param files Character; which files to read? Must be either in "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".
 #' @param use.boxr Boolean; use boxr or boxdrive? When on freund's laptop, defaults to boxdrive, otherwise boxr.
 #' @param boxdrive.path String indicating path to boxdrive. Defaults to path for freund's laptop.
 #' @keywords read, events, behavior
