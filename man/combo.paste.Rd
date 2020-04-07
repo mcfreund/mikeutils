@@ -4,7 +4,7 @@
 \alias{combo.paste}
 \title{Paste all combinations of elements of a set of strings.}
 \usage{
-combo.paste(a, b, sep = ".")
+combo.paste(a, b, ..., sep = ".")
 }
 \arguments{
 \item{a}{(character) vector 1, left-hand side of output}
