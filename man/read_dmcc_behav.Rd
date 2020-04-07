@@ -5,13 +5,13 @@
 \title{Reads trial-level behavioral data and event times for DMCC2 tasks.}
 \usage{
 read_dmcc_behav(
-  files = c("all"),
+  files = "all",
   use.boxr = if (Sys.info()["nodename"] == "CCP-FREUND") TRUE else FALSE,
   boxdrive.path = "C:/Users/mcf/Box"
 )
 }
 \arguments{
-\item{files}{Character; which files to read? Must be either \%in\% "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".}
+\item{files}{Character; which files to read? Must be either \\%in\\% "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".}
 
 \item{use.boxr}{Boolean; use boxr or boxdrive? When on freund's laptop, defaults to boxdrive, otherwise boxr.}
 

@@ -1,13 +1,13 @@
 #' Reads trial-level behavioral data and event times for DMCC2 tasks.
 #'
-#' @param files Character; which files to read? Must be either \%in\% "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".
+#' @param files Character; which files to read? Must be either \\%in\\% "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".
 #' @param use.boxr Boolean; use boxr or boxdrive? When on freund's laptop, defaults to boxdrive, otherwise boxr.
 #' @param boxdrive.path String indicating path to boxdrive. Defaults to path for freund's laptop.
 #' @keywords read, events, behavior
 
 #' @export
 read_dmcc_behav <- function(
-  files = c("all"),
+  files = "all",
   use.boxr = if (Sys.info()["nodename"] == "CCP-FREUND") TRUE else FALSE,
   boxdrive.path = "C:/Users/mcf/Box"
   ) {
