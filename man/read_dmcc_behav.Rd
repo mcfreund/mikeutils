@@ -6,14 +6,14 @@
 \usage{
 read_dmcc_behav(
   files = "all",
-  use.boxr = if (Sys.info()["nodename"] == "CCP-FREUND") TRUE else FALSE,
+  use.boxr = if (Sys.info()["nodename"] == "CCP-FREUND") FALSE else TRUE,
   boxdrive.path = "C:/Users/mcf/Box"
 )
 }
 \arguments{
-\item{files}{Character; which files to read? Must be either in "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".}
+\item{files}{Character; which files to read? Must be either \%in\% "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".}
 
-\item{use.boxr}{Boolean; use boxr or boxdrive? When on freund's laptop, defaults to boxdrive, otherwise boxr.}
+\item{use.boxr}{Boolean; use boxr or boxdrive? When on freund's laptop, defaults to FALSE (boxdrive), otherwise TRUE (boxr).}
 
 \item{boxdrive.path}{String indicating path to boxdrive. Defaults to path for freund's laptop.}
 }
