@@ -2,8 +2,7 @@
 % Please edit documentation in R/read_dmcc_behav.R
 \name{read_dmcc_behav}
 \alias{read_dmcc_behav}
-\title{Reads trial-level behavioral data and event times for DMCC2 tasks.
-?inst}
+\title{Reads trial-level behavioral data and event times for DMCC2 tasks.}
 \usage{
 read_dmcc_behav(
   files = "all",
@@ -12,7 +11,7 @@ read_dmcc_behav(
 )
 }
 \arguments{
-\item{files}{Character; which files to read? Must be either in "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".}
+\item{files}{Character; which files to read? Must be either \%in\% "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".}
 
 \item{use.boxr}{Boolean; use boxr or boxdrive? When on freund's laptop, defaults to boxdrive, otherwise boxr.}
 
@@ -20,7 +19,6 @@ read_dmcc_behav(
 }
 \description{
 Reads trial-level behavioral data and event times for DMCC2 tasks.
-?inst
 }
 \keyword{behavior}
 \keyword{events,}
