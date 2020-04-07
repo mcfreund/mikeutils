@@ -11,11 +11,11 @@ read_dmcc_behav(
 )
 }
 \arguments{
-\item{files}{(character) Which files to read? Must be either %in% "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".}
+\item{files}{Character; which files to read? Must be either \%in\% "axcpt", "cuedts", "stern", "stroop", "subjsum"; or "all." Defaults to "all".}
 
-\item{use.boxr}{(boolean) Use boxr or boxdrive? When on freund's laptop, defaults to boxdrive, otherwise boxr.}
+\item{use.boxr}{Boolean; use boxr or boxdrive? When on freund's laptop, defaults to boxdrive, otherwise boxr.}
 
-\item{boxdrive.path}{(string) String indicating path to boxdrive. Defaults to path for freund's laptop.}
+\item{boxdrive.path}{String indicating path to boxdrive. Defaults to path for freund's laptop.}
 }
 \description{
 Reads trial-level behavioral data and event times for DMCC2 tasks.
