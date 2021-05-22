@@ -19,11 +19,3 @@ combo_paste <- function(a, b, ..., sep = "_") apply(expand.grid(a, b, ...), 1, p
 #' @export
 # combopaste <- function(a, b, sep = "") apply(expand.grid(a, b), 1, paste0, collapse = sep)
 combopaste <- function(a, b, ..., sep = "") apply(expand.grid(a, b, ...), 1, paste0, collapse = sep)
-#' @export
-combo.paste3 <- function(a, b, d, sep = ".") apply(expand.grid(apply(expand.grid(a, b), 1, paste0, collapse = sep), d), 1, paste0, collapse = sep)
-#' @export
-combo_paste3 <- function(a, b, d, sep = "_") apply(expand.grid(apply(expand.grid(a, b), 1, paste0, collapse = sep), d), 1, paste0, collapse = sep)
-#' @export
-combopaste3 <- function(a, b, d, sep = "_") apply(expand.grid(apply(expand.grid(a, b), 1, paste0, collapse = sep), d), 1, paste0, collapse = sep)
-
-

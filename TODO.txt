@@ -1,0 +1,52 @@
+enlist <- function(x) setNames(vector("list", length(x)), x)
+
+
+matplot <- function(x) {
+  
+  ggplot(symmat4ggplot(x), aes(v1, v2, fill = value)) +
+  geom_raster() +
+  scale_fill_viridis_c(option = "inferno") +
+  theme_minimal() +
+  theme(
+    axis.text = element_blank(), axis.title = element_blank(), legend.position = "none",
+    panel.border = element_blank(), panel.grid = element_blank()
+    )
+  
+}
+
+
+
+tidy_lmer <- function(x) {
+  coefs <- as.data.frame(coef(summary(x)))
+  coefs$term <- rownames(coefs)
+  dplyr::rename(coefs, estimate = "Estimate", se = "Std. Error", "statistic" = "t value", p.value = "Pr(>|t|)")
+}
+
+
+bic <- function(eps, k, n = length(eps), w = rep(1, n)) {
+  ## https://stackoverflow.com/questions/35131450/calculating-bic-manually-for-lm-object
+  ll <- 0.5 * ( sum(log(w)) - n * (log(2 * pi) + 1 - log(n) + log(sum(w * eps^2))) )
+  -2 * ll + log(n) * (k + 1)
+}
+
+aic <- function(eps, k, n = length(eps), w = rep(1, n)) {
+  ## https://stackoverflow.com/questions/35131450/calculating-bic-manually-for-lm-object
+  ll <- 0.5 * ( sum(log(w)) - n * (log(2 * pi) + 1 - log(n) + log(sum(w * eps^2))) )
+  -2 * ll + 2 * (k + 1)
+}
+
+logit2prob <- function(x) exp(x) / (1 + exp(x))
+
+
+
+
+boot_mean_ci <- function(x, R = 1E4, type = "bca", ...) {
+  
+  out <- boot::boot(x, statistic = function(x, ii) mean(x[ii]), R = R, ...)
+  ci <- boot::boot.ci(out, type = type)[[type]][4:5]
+  
+  data.frame(y = out$t0, ymin = ci[1], ymax = ci[2])
+  
+}
+
+
